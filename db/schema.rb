@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20161009145222) do
 
   create_table "routes", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "trains", force: :cascade do |t|
