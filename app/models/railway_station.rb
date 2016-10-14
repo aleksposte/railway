@@ -7,5 +7,6 @@ class RailwayStation < ActiveRecord::Base
   has_many :routes, through: :railway_stations_routes
 
   # Много trains
-  has_many :trains
+  has_many :trains, class_name: 'Train', foreign_key: :current_station_id
 end
+
