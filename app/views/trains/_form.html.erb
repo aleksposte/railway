@@ -15,6 +15,10 @@
     <%= f.label :number %><br>
     <%= f.number_field :number %>
   </div>
+  <div class="field">
+    <%= f.label :route %><br>
+    <%= f.collection_select :route_id, Route.all, :id, :title %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
