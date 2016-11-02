@@ -1,0 +1,9 @@
+<!-- Безымянные parshials -->
+
+<% if @route.railway_stations.present? %>
+  <% @route.railway_stations.each do |station| %>
+    <%= station.title %>
+  <% end %>
+<% else %>
+  Станций на маршруте нет
+<% end %>

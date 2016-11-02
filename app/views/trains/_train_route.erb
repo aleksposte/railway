@@ -1,0 +1,7 @@
+<!-- Безымянные parshials -->
+
+  <% if @train.route.present? %>
+    <%= @train.route.title %>
+  <% else %>
+    Маршрут не назначен
+  <% end %>

@@ -1,0 +1,8 @@
+<!-- Безымянные parshials -->
+
+<% @train.carriages.each do |carriage| %>
+  Number: <%= carriage.number %>
+  Type: <%= carriage.type_carriage %>
+  Top_seats: <%= carriage.top_seats %>
+  Bottom_seats: <%= carriage.bottom_seats %><br>
+<% end %>

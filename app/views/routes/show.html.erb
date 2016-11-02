@@ -8,24 +8,12 @@
 </p>
 <p>
   <strong>Stations on the route:</strong>
-  <% if @route.railway_stations.present? %>
-    <% @route.railway_stations.each do |station| %>
-      <%= station.title %>
-    <% end %>
-  <% else %>
-    Станций на маршруте нет
-  <% end %>
+  <%= render 'stations_on_the_route' %>
 </p>
 
 <p>
   <strong>Trains on the route:</strong>
-  <% if @route.trains.present? %>
-    <% @route.trains.each do |train| %>
-      <%= train.number %>
-    <% end %>
-  <% else %>
-    Поездов на маршруте нет
-  <% end %>
+  <%= render 'trains_on_the_route' %>
 </p>
 
 

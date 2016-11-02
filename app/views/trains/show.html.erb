@@ -1,28 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Train number:</strong>
-  <%= @train.number %>
+  <strong>Train number:</strong><br>
+  <%= render @train %>
 </p>
+
 <p>
-  <strong>Train route:</strong>
-  <% if @train.route.present? %>
-    <%= @train.route.title %>
-  <% else %>
-    Маршрут не назначен
-  <% end %>
+  <strong>Train route:</strong><br>
+  <%= render 'train_route' %>
 </p>
 
-<strong>Train wagons:</strong><br>
-<% @train.carriages.each do |carriage| %>
-  Number: <%= carriage.number %>
-  Type: <%= carriage.type_carriage %>
-  Top_seats: <%= carriage.top_seats %>
-  Bottom_seats: <%= carriage.bottom_seats %><br>
-<% end %>
+<p>
+  <strong>Train carriages:</strong><br>
+  <%= render 'train_carriages' %>
+</p>
+ 
 
-
-<%= link_to 'Edit', edit_train_path(@train) %> |
+<%= link_to 'Edit', edit_train_path(@train) %>
 <%= link_to 'Back', trains_path %>
 <%= link_to 'Home', root_path %>
 
