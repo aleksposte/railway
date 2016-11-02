@@ -1,0 +1,44 @@
+<%= form_for(@carriage) do |f| %>
+  <% if @carriage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@carriage.errors.count, "error") %> prohibited this carriage from being saved:</h2>
+
+      <ul>
+      <% @carriage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :train_id, "Номер поезда, к которому добавить" %><br>
+    
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type_carriage, "Укажите тип вагона: купе - с , плацкарт - r " %><br>
+    <%= f.text_field :type_carriage %>
+  </div>
+
+  <div class="field">
+    <%= f.label :number, "Номер вагона" %><br>
+    <%= f.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :top_seats, "Количество верхних мест" %><br>
+    <%= f.number_field :top_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bottom_seats, "Количество нижних мест" %><br>
+    <%= f.number_field :bottom_seats %>
+  </div>
+   
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

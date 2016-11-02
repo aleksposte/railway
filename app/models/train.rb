@@ -11,4 +11,6 @@ class Train < ActiveRecord::Base
 
   # Имеет много tickets
   has_many :tickets
+
+  has_many :carriages
 end
