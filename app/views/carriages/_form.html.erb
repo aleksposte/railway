@@ -18,8 +18,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :type_carriage, "Укажите тип вагона: купе - с , плацкарт - r " %><br>
-    <%= f.text_field :type_carriage %>
+    <%= f.label :type_carriage, "Тип вагона:" %>
+    <%= f.select :type_carriage, Carriage.type_carriage%>
   </div>
 
   <div class="field">

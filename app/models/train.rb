@@ -13,4 +13,10 @@ class Train < ActiveRecord::Base
   has_many :tickets
 
   has_many :carriages
+
+  def carriage_list
+    # Carriage.where(train_id: self.id).order(number: self.sort_order ? :asc : :desc)
+    carriages.order(number: self.sort_order ? :asc : :desc)
+  end
+  
 end

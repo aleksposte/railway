@@ -1,4 +1,4 @@
-<!-- Безымянные parshials -->
+<!-- Безымянные partiials -->
 <tr>
   <td>Number:<%= carriage.number %></td><br>
   <td>Train:<%= carriage.train.number %></td><br>
@@ -7,8 +7,10 @@
   <td>Bottom_seats:<%= carriage.bottom_seats %></td><br>
   
 
-  <td><%= link_to 'Show', carriage %></td>
-  <td><%= link_to 'Edit', edit_carriage_path(carriage) %></td>
-  <td><%= link_to 'Destroy', carriage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  
+  <td><%= link_to 'Просмотреть', carriage %></td>
+  <td><%= link_to 'Редактировать', edit_carriage_path(carriage) %></td>
+  <td><%= link_to 'Удалить', carriage, method: :delete, data: { confirm: 'Точно удалить?' } %></td>
+
 </tr> 
+
+<%= link_to 'Главная', root_path %>
