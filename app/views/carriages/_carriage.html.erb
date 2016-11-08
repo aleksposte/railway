@@ -1,16 +1,8 @@
 <!-- Безымянные partiials -->
-<tr>
-  <td>Number:<%= carriage.number %></td><br>
-  <td>Train:<%= carriage.train.number %></td><br>
-  <td>Type:<%= carriage.type_carriage %></td><br>
-  <td>Top_seats:<%= carriage.top_seats %></td><br>
-  <td>Bottom_seats:<%= carriage.bottom_seats %></td><br>
-  
-
-  <td><%= link_to 'Просмотреть', carriage %></td>
-  <td><%= link_to 'Редактировать', edit_carriage_path(carriage) %></td>
-  <td><%= link_to 'Удалить', carriage, method: :delete, data: { confirm: 'Точно удалить?' } %></td>
-
-</tr> 
-
-<%= link_to 'Главная', root_path %>
+<p>
+  Number:<%= carriage.number %><br>
+  Train:<%= carriage.train.number %><br>
+  Type:<%= carriage.type_carriage %><br>
+  Top_seats:<%= carriage.top_seats %><br>
+  Bottom_seats:<%= carriage.bottom_seats %><br>
+</p>

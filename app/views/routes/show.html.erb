@@ -3,19 +3,20 @@
 
 
 <p>
-  <strong>Route:</strong>
+  <strong>Маршрут:</strong>
   <%= @route.title %>
 </p>
 <p>
-  <strong>Stations on the route:</strong>
+  <strong>Станции на маршруте:</strong>
   <%= render 'stations_on_the_route' %>
 </p>
 
 <p>
-  <strong>Trains on the route:</strong>
+  <strong>Поезда на маршруте:</strong>
   <%= render 'trains_on_the_route' %>
 </p>
 
 
-<%= link_to 'Edit', edit_route_path(@route) %> |
-<%= link_to 'Back', routes_path %>
+<%= link_to 'Редактировать', edit_route_path(@route) %> |
+<%= link_to 'Назад', routes_path %>
+<%= link_to 'Главная', root_path %>

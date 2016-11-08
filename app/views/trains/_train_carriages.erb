@@ -1,32 +1,18 @@
 <!-- Безымянные partials -->
-
-<% @train.carriages.each do |carriage| %>
-  Number: <%= carriage.number %>
-  Type: <%= carriage.type_carriage %>
-  Top_seats: <%= carriage.top_seats %>
-  Bottom_seats: <%= carriage.bottom_seats %><br>
-<% end %>
-
 <p>
-  <strong>Список вагонов:</strong>
-<ul>
-  <% @train.carriage_list.each do |c| %>
-      <li>
-        <%= link_to "Вагон № #{c.number}", carriage_path(c) %>
-      </li>
-  <% end %>
-</ul>
+  <strong>Всего:</strong>
+  <%= @train.carriages.length %>
 </p>
 <p>
-  <strong>Количество вагонов по типам:</strong>
-<ul>
-  <% @train.carr_by_type.each do |t| %>
-      <li>
-        <%= "#{t[0]} -- #{t[1]} " %>
-        <% @train.places_by_type(t[0]).each do |p| %>
-            <%= "#{p[0]}: #{p[1]}" %>
-        <% end %>
-      </li>
-  <% end %>
-</ul>
+  <strong>Вагоны по типам:</strong><br>
+  <p>
+    <% @train.carr_by_type.each do |type| %>
+        
+      Тип:<%= "#{type[0]} - #{type[1]} " %>
+          <% @train.places_by_type(type[0]).each do |seat| %>
+              <%= "#{seat[0]}: #{seat[1]}" %><br>
+          <% end %>
+        
+    <% end %>
+  </p>
 </p>

@@ -1,22 +1,23 @@
+<%= link_to 'Главная', root_path %><br>
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Train number:</strong><br>
+  <strong>Номер поезда:</strong><br>
   <%= render @train %>
 </p>
 
 <p>
-  <strong>Train route:</strong><br>
+  <strong>Маршрут поезда:</strong><br>
   <%= render 'train_route' %>
 </p>
 
 <p>
-  <strong>Train carriages:</strong><br>
+  <strong>Вагоны у поезда:</strong><br>
   <%= render 'train_carriages' %>
 </p>
  
 
-<%= link_to 'Edit', edit_train_path(@train) %>
-<%= link_to 'Back', trains_path %>
-<%= link_to 'Home', root_path %>
+<%= link_to 'Редактировать', edit_train_path(@train) %>
+<%= link_to 'Назад', trains_path %>
+
 

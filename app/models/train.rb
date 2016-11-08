@@ -14,9 +14,35 @@ class Train < ActiveRecord::Base
 
   has_many :carriages
 
-  def carriage_list
-    # Carriage.where(train_id: self.id).order(number: self.sort_order ? :asc : :desc)
-    carriages.order(number: self.sort_order ? :asc : :desc)
-  end
   
+  def carr_by_type
+    c_type = {}
+    Carriage.type_carriage.each do |type|
+      c_type[type] = 0
+      self.carriages.each do |c|
+        if c.type_carriage == type.to_s
+          c_type[type] += 1
+        end
+      end
+    end
+    return c_type
+  end
+
+  def places_by_type (type_carriage)
+    c_type = {
+              "Верхние места" => 0, 
+              "Нижние места" => 0
+              }
+
+    self.carriages.each do |c|
+      if c.type_carriage == type_carriage
+        if c.top_seats.present?
+          c_type["Верхние места"] += c.top_seats
+        end
+          c_type["Нижние места"]  += c.bottom_seats unless c.bottom_seats.nil?
+      end
+    end
+    return c_type
+  end
+
 end
