@@ -1,10 +1,7 @@
 class Carriage < ActiveRecord::Base
   belongs_to :train
 
-  validates :number, presence:  true
-  validates :top_seats, presence:  true
-  validates :bottom_seats, presence:  true
-  validates :train_id, presence:  true
+  validates :number, :top_seats, :bottom_seats, :train_id, presence: true
 
   CARRIAGE_TYPES = ['Coupe', 'Econom']
 
