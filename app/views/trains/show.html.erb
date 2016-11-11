@@ -15,7 +15,18 @@
   <strong>Вагоны у поезда:</strong><br>
   <%= render 'train_carriages' %>
 </p>
- 
+
+ <p>
+  <strong>Список вагонов:</strong>
+<ul>
+  <% @train.carriage_list.each do |carriage| %>
+      <li>
+        <%= link_to "Вагон № #{carriage.number}", carriage_path(carriage) %>
+      </li>
+  <% end %>
+</ul>
+</p>
+
 
 <%= link_to 'Редактировать', edit_train_path(@train) %>
 <%= link_to 'Назад', trains_path %>

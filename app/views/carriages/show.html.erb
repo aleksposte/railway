@@ -2,8 +2,45 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Вагон:</strong>
-  <%= render @carriage %>
+  <strong>Вагон номер:</strong>
+  <%= @carriage.number %>
+  <strong>Тип:</strong>
+  <% if @carriage.type_carriage.present? %>
+      <%= @carriage.type_carriage %>
+  <% else %>
+      Тип не указан
+  <% end %>
+<ul>
+  <li>
+    Верхних мест:
+    <% top_seats = @carriage.top_seats.nil? ? 0 : @carriage.top_seats %>
+    <%= top_seats %>
+  </li>
+  <li>
+    Нижних мест:
+    <% bottom_seats = @carriage.bottom_seats.nil? ? 0 : @carriage.bottom_seats %>
+    <%= bottom_seats %>
+  </li>
+  <li>
+    Верхних боковых мест:
+    <% side_top_seats = @carriage.side_top_seats.nil? ? 0 : @carriage.side_top_seats %>
+    <%= side_top_seats %>
+  </li>
+  <li>
+    Нижних боковых мест:
+    <% side_bottom_seats = @carriage.side_bottom_seats.nil? ? 0 : @carriage.side_bottom_seats %>
+    <%= side_bottom_seats %>
+  </li>
+  <li>
+    Сидячих мест :
+    <% seat_seats = @carriage.seat_seats.nil? ? 0 : @carriage.seat_seats %>
+    <%= seat_seats %>
+  </li>
+  <li>
+    Всего мест:
+    <%= top_seats + bottom_seats + side_top_seats + side_bottom_seats + seat_seats %>
+  </li>
+</ul>
 </p>
 
 <p>

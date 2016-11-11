@@ -7,12 +7,10 @@
   <strong>Вагоны по типам:</strong><br>
   <p>
     <% @train.carr_by_type.each do |type| %>
-        
       Тип:<%= "#{type[0]} - #{type[1]} " %>
           <% @train.places_by_type(type[0]).each do |seat| %>
               <%= "#{seat[0]}: #{seat[1]}" %><br>
-          <% end %>
-        
+          <% end %>    
     <% end %>
   </p>
 </p>
