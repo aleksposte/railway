@@ -22,37 +22,26 @@ class CarriagesController < ApplicationController
   def create
     @carriage = Carriage.new(carriage_params)
 
-    respond_to do |format|
-      if @carriage.save
-        format.html { redirect_to @carriage, notice: 'Carriage was successfully created.' }
-        format.json { render :show, status: :created, location: @carriage }
-      else
-        format.html { render :new }
-        format.json { render json: @carriage.errors, status: :unprocessable_entity }
-      end
+    if @carriage.save
+      redirect_to @carriage, notice: 'Вагон создан!'
+    else
+      render :new
     end
   end
 
 
   def update
-    respond_to do |format|
-      if @carriage.update(carriage_params)
-        format.html { redirect_to @carriage, notice: 'Carriage was successfully updated.' }
-        format.json { render :show, status: :ok, location: @carriage }
-      else
-        format.html { render :edit }
-        format.json { render json: @carriage.errors, status: :unprocessable_entity }
-      end
+    if @carriage.update(carriage_params)
+      redirect_to @carriage, notice: 'Информация о вагоне обновлена!'
+    else
+      render :edit
     end
   end
 
 
   def destroy
     @carriage.destroy
-    respond_to do |format|
-      format.html { redirect_to carriages_url, notice: 'Carriage was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to carriages_url, notice: 'Вагон удален!' 
   end
 
   private
@@ -63,7 +52,7 @@ class CarriagesController < ApplicationController
 
     
     def carriage_params
-      params.require(:carriage).permit(:number, :type_carriage, :top_seats, :bottom_seats, :side_top_seats, :side_bottom_seats, :seats_seats, :train_id)
+      params.require(:carriage).permit(:number, :type_carriage, :top_seats, :bottom_seats, :side_top_seats, :side_bottom_seats, :seat_seats, :train_id)
     end
 
 

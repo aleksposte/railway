@@ -47,6 +47,7 @@
 <%= link_to 'Просмотреть', @carriage %>
 <%= link_to 'Редактировать', edit_carriage_path(@carriage) %>
 <%= link_to 'Удалить', @carriage, method: :delete, data: { confirm: 'Точно удалить?' } %><br>
+<%= link_to 'Список поездов', trains_path %><br>
 <%= link_to 'Назад', carriages_path %>
 </p>
 
