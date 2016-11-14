@@ -1,15 +1,7 @@
 <%= form_for(@carriage) do |f| %>
-  <% if @carriage.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@carriage.errors.count, "error") %> prohibited this carriage from being saved:</h2>
-
-      <ul>
-      <% @carriage.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
+  <!- Сообщения об ошибках вынесены в 'common/errors' ->
+  <%= render 'common/errors', resource: @carriage %>
   
   <div class="field">
     <%= f.label :train_id, "Номер поезда, к которому добавить" %><br>
