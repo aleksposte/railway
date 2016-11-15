@@ -8,6 +8,9 @@ class Carriage < ActiveRecord::Base
   #Проверка на уникальность номера вагона
   validates :number, uniqueness: { scope: :train_id }
 
+  # Сортировка вагонов по номеру
+  scope :ordered, -> { order(:number) }
+
   CARRIAGE_TYPES = ['Coupe', 'Econom', 'SV', 'Seating']
 
   def self.type_carriage

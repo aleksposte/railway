@@ -72,8 +72,10 @@ class Train < ActiveRecord::Base
     seats
   end
 
-   def carriage_list
-    carriages.order(number: self.sort_order ? :asc : :desc)
-  end
-
+  # def carriage_list
+  #   carriages.order(number: self.sort_order ? :asc : :desc)
+  # end
+ 
 end
+
+
