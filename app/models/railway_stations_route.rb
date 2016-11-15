@@ -6,4 +6,6 @@ class RailwayStationsRoute < ActiveRecord::Base
   
   # В разных routes могут иметь разные номера
   validates :railway_station_id, uniqueness: { scope: :route_id }
+
+  default_scope { order(:station_number) }
 end
