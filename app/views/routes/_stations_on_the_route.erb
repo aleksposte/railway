@@ -1,0 +1,10 @@
+<!-- Безымянные partials -->
+
+<!-- Вот здесь нужно выводить список станций маршрута по порядку, то есть сделать scope с сортировкой по полю station_number. -->
+<% if @route.railway_stations.present? %>
+  <% @route.railway_stations.ordered.each do |station| %>
+    <%= station.title %>
+  <% end %>
+<% else %>
+  Станций на маршруте нет
+<% end %>

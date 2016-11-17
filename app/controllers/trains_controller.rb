@@ -60,7 +60,7 @@ class TrainsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_train
@@ -69,6 +69,6 @@ class TrainsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def train_params
-      params.require(:train).permit(:number, :route_id)
+      params.require(:train).permit(:number, :sort_order, :route_id)
     end
 end

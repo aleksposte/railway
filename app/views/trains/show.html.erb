@@ -1,18 +1,35 @@
+<%= link_to 'Главная', root_path %><br>
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Number:</strong>
-  <%= @train.number %>
-</p>
-<p>
-  <strong>train route:</strong>
-  <% if @train.route.present? %>
-  <%= @train.route.title %>
-  <% else %>
-  "Маршрут не назначен"
-  <% end %>
+  <strong>Номер поезда:</strong><br>
+  <%= render @train %>
 </p>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+<p>
+  <strong>Маршрут поезда:</strong><br>
+  <%= render 'train_route' %>
+</p>
+
+<p>
+  <strong>Вагоны у поезда:</strong><br>
+  <%= render 'train_carriages' %>
+</p>
+
+ <p>
+  <strong>Список вагонов:</strong>
+<ul>
+  <% @train.carriages.ordered.each do |carriage| %>
+      <li>
+        <%= link_to "Вагон № #{carriage.number}", carriage_path(carriage) %>
+      </li>
+  <% end %>
+</ul>
+</p>
+
+
+<%= link_to 'Редактировать', edit_train_path(@train) %>
+<%= link_to 'Назад', trains_path %>
+
+
 
