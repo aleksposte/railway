@@ -1,8 +1,7 @@
-<!-- Безымянные partials -->
+<!-- Безымянные parshials -->
 <tr>
   <td><%= train.number %></td>
-  
-  <td><%= link_to 'Показать', train %></td>
-  <td><%= link_to 'Редактировать', edit_train_path(train) %></td>
-  <td><%= link_to 'Удалить', train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to 'Show', train %></td>
+  <td><%= link_to 'Edit', edit_train_path(train) %></td>
+  <td><%= link_to 'Destroy', train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
