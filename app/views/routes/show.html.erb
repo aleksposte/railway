@@ -1,21 +1,23 @@
-<%= link_to 'Главная', root_path %>
 <p id="notice"><%= notice %></p>
 
+
+
 <p>
-  <strong>Маршрут:</strong>
+  <strong>Route:</strong>
   <%= @route.title %>
 </p>
-<p>
-  <strong>Станции на маршруте:</strong>
-  <%= render 'stations_on_the_route' %>
-</p>
 
 <p>
-  <strong>Поезда на маршруте:</strong>
-  <%= render 'trains_on_the_route' %>
+  <strong>Trains on the route:</strong>
+  <% if @route.trains.present? %>
+  <% @route.trains.each do |train| %>
+    <%= train.number %>
+  <% end %>
+  <% else %>
+  "Поездов на маршруте нет"
+  <% end %>
 </p>
 
 
-<%= link_to 'Редактировать', edit_route_path(@route) %> |
-<%= link_to 'Назад', routes_path %>
-
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>

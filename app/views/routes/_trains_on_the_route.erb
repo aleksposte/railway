@@ -1,9 +1,0 @@
-<!-- Безымянные parshials -->
-
-<% if @route.trains.present? %>
-  <% @route.trains.each do |train| %>
-    <%= train.number %>
-  <% end %>
-<% else %>
-  Поездов на маршруте нет
-<% end %>
