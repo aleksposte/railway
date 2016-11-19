@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   root 'welcome#index'
   # get 'welcome/index'
 
+  # Создаем вызов своего экшена, on: :member - работает с отдельным объектом (для коллекции - on: :collection)
+  resources :railway_stations do
+    patch :update_position, on: :member
+  end
+
   resources :trains
-  resources :railway_stations
   resources :routes
   resources :carriages
   # The priority is based upon order of creation: first created -> highest priority.

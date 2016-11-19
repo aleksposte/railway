@@ -12,16 +12,26 @@ class RailwayStation < ActiveRecord::Base
   # default_scope { order(:station_number) }
 
   # Сортировка станций по номеру
-  scope :ordered, -> { joins(:railway_stations_routes).order('railway_stations_routes.station_number').distinct }
+  scope :ordered, -> { joins(:railway_stations_routes).order('railway_stations_routes.position').uniq }
 
+  # Изменение позиции станции в маршруте:  
   def update_position(route, position)
     station_route = station_route(route)
-    station_route.update(station_number: position) if station_route
+    station_route.update(position: position) if station_route
   end
 
   def position_in(route)
-    station_route(route).try(:station_number)
+    station_route(route).try(:position)
   end
+
+  # def update_position(route, position)
+  #   station_route = station_route(route)
+  #   station_route.update(station_number: position) if station_route
+  # end
+
+  # def position_in(route)
+  #   station_route(route).try(:station_number)
+  # end
 
   protected
 

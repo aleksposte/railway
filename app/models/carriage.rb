@@ -26,5 +26,7 @@ protected
     self.number = carriage_max_number + 1
   end
 
+  
+
 end
 

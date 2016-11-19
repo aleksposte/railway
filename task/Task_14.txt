@@ -1,0 +1,87 @@
+Внимание! Все задания, начиная с этого урока, нужно выполнять в отдельных ветках и сдавать через pull requests, публикуя ссылку на него в качестве ответа.
+
+Создать ветку, реализовать в ней следюущий функционал:
+
+Возможность управления вагонами (добавление/удаление/изменение)
+ - При добавлении вагона указывается поезд, к которому он добавляется, а также:
+ - Тип вагона (купейный/плацкартный)
+ - Кол-во мест: верхних/нижних
+При просмотре поезда, также должна отображаться следующая информация:
+ - Кол-во плацкартный/купейных вагонов в составе поезда
+ - Кол-во мест: плацкартных верхних/нижних, купейных верхних/нижних
+
+Залить ветку на github
+Создать pull request и опубликовать ссылку на него в качестве ответа на задание
+Слить изменения в master только после того, как задание будет принято.
+
+<%= link_to 'Carriages', carriages_path %>
+
+<p>
+  <strong>carriage route:</strong>
+  <% if @carriage.route.present? %>
+    <%= @carriage.route.title %>
+  <% else %>
+    Маршрут не назначен
+  <% end %>
+</p>
+
+ <div class="field">
+    <%= f.label :route %><br>
+    <%= f.collection_select :route_id, Route.all, :id, :title %>
+  </div>
+
+  <%= @carriage.number %>
+
+   <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+ <%= f.number_field :train_id %>
+
+  <% if carriage.type_carriage == 'с' %>
+    <% c = {} %>
+    <% c << carriage %>
+    <% all_c = c.size %>
+    All_C:<%= all_c %>
+    <% end %>
+
+
+    <strong>Train wagons:</strong><br>
+<% @train.carriages.each do |carriage| %>
+  Number: <%= carriage.number %>
+  Type: <%= carriage.type_carriage %>
+  Top_seats: <%= carriage.top_seats %>
+  Bottom_seats: <%= carriage.bottom_seats %><br>
+<% end %>
+
+<%= render 'carriages/carriage' %>
+
+<%= link_to 'Главная', root_path %>
+
+<% if  carriage.type_carriage == 'c' %>
+  <% all = 0 %>
+  <% all += carriage.top_seats.to_i %>
+  Top_seats_all: <%= all %>
+  <% end %>
+
+
+  <% @train.carriages.each do |carriage| %>
+  Number: <%= carriage.number %>
+  Type: <%= carriage.type_carriage %>
+  Top_seats: <%= carriage.top_seats %>
+  Bottom_seats: <%= carriage.bottom_seats %><br>
+<% end %>
+
+
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Главная', root_path %>
+<%= link_to 'Создать новый вагон', new_carriage_path %><br>
+
+
+<h1>Все вагоны:</h1><br>
+<%= render @carriages %><br>
+
+
+
+
