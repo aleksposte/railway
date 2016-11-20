@@ -21,15 +21,16 @@
 <ul>
   <% @train.carriages.ordered.each do |carriage| %>
       <li>
-        <%= link_to "Вагон № #{carriage.number}", carriage_path(carriage) %>
+        <%= link_to "Вагон № #{carriage.number}", carriage %>
       </li>
   <% end %>
 </ul>
 </p>
 
-
+<%= link_to 'Добавить вагон', new_train_carriage_path(@train) %>
 <%= link_to 'Редактировать', edit_train_path(@train) %>
 <%= link_to 'Назад', trains_path %>
+
 
 
 

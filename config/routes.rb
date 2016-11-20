@@ -7,9 +7,15 @@ Rails.application.routes.draw do
     patch :update_position, on: :member
   end
 
-  resources :trains
+  # Добавление вагонов через вложенный ресурс
+  resources :trains do
+    resources :carriages, shallow: true
+  end
+
   resources :routes
   resources :carriages
+
+  resource :search, only: [:new, :show, :edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
