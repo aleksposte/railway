@@ -7,6 +7,8 @@
       <tr>
         <td>Название</td>
         <td>Позиция</td>
+        <td>Время прибытия</td>
+        <td>Время отправления</td>
       </tr>
     </thead>
     <tbody>
@@ -17,9 +19,17 @@
             <%= form_tag update_position_railway_station_path(station), method: :patch do %>
               <%= number_field_tag :position, station.position_in(@route) %>
               <%= hidden_field_tag :route_id, @route.id %>
-              <%= submit_tag "Изменить" %>
-            <% end %>
           </td>
+          <td>
+            <%= time_field_tag :arrival_time, station.arrival_time(@route) %>
+            <%= hidden_field_tag :route_id, @route.id %>
+          </td>
+          <td>
+            <%= time_field_tag :departure_time, station.departure_time(@route) %>
+            <%= hidden_field_tag :route_id, @route.id %>
+            <%= submit_tag "Изменить" %>
+          </td>
+          <% end %>
         </tr>
        <% end %>
     </tbody>

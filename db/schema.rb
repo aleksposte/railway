@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117083409) do
+ActiveRecord::Schema.define(version: 20161120144912) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer  "number",            default: 0
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20161117083409) do
     t.datetime "updated_at",         null: false
     t.integer  "station_number"
     t.integer  "position"
+    t.string   "arrival_time"
+    t.string   "departure_time"
   end
 
   create_table "routes", force: :cascade do |t|

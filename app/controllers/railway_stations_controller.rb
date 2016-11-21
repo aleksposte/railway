@@ -37,10 +37,10 @@ class RailwayStationsController < ApplicationController
     end
   end
 
-  # Изменение позиции станции в маршруте:  
+  # Изменение позиции станции в маршруте, времени прибытия и отправления:  
   def update_position
     @route = Route.find(params[:route_id])
-    @railway_station.update_position(@route, params[:position])
+    @railway_station.update_position(@route, params[:position], params[:arrival_time], params[:departure_time])
     redirect_to @route
   end
 

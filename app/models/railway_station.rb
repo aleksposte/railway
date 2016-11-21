@@ -14,26 +14,30 @@ class RailwayStation < ActiveRecord::Base
   # Сортировка станций по номеру
   scope :ordered, -> { joins(:railway_stations_routes).order('railway_stations_routes.position').uniq }
 
-  # Изменение позиции станции в маршруте:  
-  def update_position(route, position)
+# Изменение позиции станции в маршруте, времени прибытия и отправления:    
+  def update_position(route, position, arrival_time, departure_time)
     station_route = station_route(route)
-    station_route.update(position: position) if station_route
+    station_route.update(position: position, arrival_time: arrival_time, departure_time: departure_time) if station_route
   end
 
   def position_in(route)
     station_route(route).try(:position)
   end
 
-  # def update_position(route, position)
-  #   station_route = station_route(route)
-  #   station_route.update(station_number: position) if station_route
-  # end
+  def update_time
+    
+  end
 
-  # def position_in(route)
-  #   station_route(route).try(:station_number)
-  # end
+  # Время прибытия и отправления
+  def arrival_time(route)
+    railway_stations_routes.where(route: route).first.arrival_time
+  end
 
-  protected
+  def departure_time(route)
+    railway_stations_routes.where(route: route).first.departure_time
+  end
+
+protected
 
   def station_route(route)
     @station_route ||= railway_stations_routes.where(route: route).first
