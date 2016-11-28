@@ -1,0 +1,61 @@
+<%= link_to 'Главная', root_path %><br>
+
+<h2>Поиск билетов</h2>
+
+<%= form_for(@search, method: :post, url: search_path) do |f| %>
+
+  <!-- Сообщения об ошибках вынесены в 'common/errors' -->
+  <%= render 'common/errors', resource: @search %>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.label :start_station_id, 'Станция отправления:' %>
+          <%= f.collection_select :start_station_id, RailwayStation.all, :id, :title, {} %>
+        </div>
+        <div class="col-md-4">
+          <%= f.label :end_station_id, 'Станция назначения:' %>
+          <%= f.collection_select :end_station_id, RailwayStation.all, :id, :title, {} %>
+        </div>
+        <div class="col-md-4">
+          <%= f.submit 'Найти' %>
+        </div>
+      </div>
+    </div>
+    <% if @search.result %>
+        <% if @search.result.empty?  %>
+            <p ><h4 class="text-danger">Подходящих маршрутов не найдено.Выберите другие станции.</h4></p>
+          <%else%>
+            <h2><%= "Результаты:" %></h2>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <td><%= "Поезд №:" %></td>
+                    <td><%= "Маршрут:" %></td>
+                    <td><%= "Время отправления:" %></td>
+                    <td><%= "Время прибытия:" %></td>
+                  </tr>
+                </thead>
+                <tbody>
+                <% @search.result.each do |t| %>
+                    <tr>
+                      <td><%= t.number %></td>
+                      <td><%= t.route.title %></td>
+                      <td><%= @search.start_station.arrival_time(t.route) %></td>
+                      <td><%= @search.end_station.departure_time(t.route) %></td>
+                      <td>
+                        <%= form_tag({controller: "tickets", action: "new"}, method: "post") do %> 
+                            <%= hidden_field_tag :train_id, t.id %>
+                            <%= hidden_field_tag :start_station_id, @search.start_station_id %>
+                            <%= hidden_field_tag :end_station_id, @search.end_station_id %>
+                            <%= submit_tag "Купить билет" %>
+                        <% end %>
+                      </td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        <% end %>
+    <% end %>
+<% end %>
+

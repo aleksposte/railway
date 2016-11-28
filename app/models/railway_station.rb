@@ -14,6 +14,9 @@ class RailwayStation < ActiveRecord::Base
   # Сортировка станций по номеру
   scope :ordered, -> { joins(:railway_stations_routes).order('railway_stations_routes.position').uniq }
 
+  # Сортировка станций по номеру при показе выбора маршрута
+  scope :ordered_by_title, -> { order('title asc')}
+
 # Изменение позиции станции в маршруте, времени прибытия и отправления:    
   def update_position(route, position, arrival_time, departure_time)
     station_route = station_route(route)

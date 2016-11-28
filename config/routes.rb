@@ -15,7 +15,13 @@ Rails.application.routes.draw do
   resources :routes
   resources :carriages
 
-  resource :search, only: [:new, :show, :edit]
+  resource :search, only: [:new, :create, :show, :edit]
+
+  resources :tickets do
+    post :new, on: :member
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

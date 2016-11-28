@@ -11,4 +11,8 @@ class Ticket < ActiveRecord::Base
   
   # Принадлежит train
   belongs_to :train
+ 
 end
+
+
+  

@@ -1,0 +1,39 @@
+<%= link_to 'Главная', root_path %><br>
+
+<h2>Изменеие Билета</h2>
+
+<p>
+  <table>
+  <tbody>
+    <tr>
+      <th>Номер поезда:</th>
+      <td><%= @ticket.train.number %></td>
+    </tr>
+
+    <tr>
+      <th>Маршрут поезда:</th>
+      <td><%= @ticket.train.route.title %></td>
+    </tr>
+
+    <tr>
+      <th>Начальная станция:</th>
+      <td><%= @ticket.start_station.title %></td>
+    </tr>
+
+    <tr>
+      <th>Конечнвя станция:</th>
+      <td><%= @ticket.end_station.title %></td>
+    </tr>
+
+  </tbody>
+</table>
+
+</p>
+
+<p>
+  <%= render 'form' %>
+</p>
+
+<p>
+  <%= link_to 'Список билетов', tickets_path %>
+</p>

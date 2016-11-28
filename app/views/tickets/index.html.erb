@@ -1,0 +1,32 @@
+<%= link_to 'Главная', root_path %><br>
+
+<h2>Билеты:</h2>
+
+<table class="table table-striped">
+
+  <thead>
+  <th>Пассажир имя:</th>
+  <th>Пасспорт №:</th>
+  <th>Поезд №:</th>
+  <th>Станция отправления:</th>
+  <th>Станция назначения:</th>
+  </thead>
+
+  <tbody>
+  <% @tickets.each do |t| %>
+    <tr>
+      <td><%= t.passenger_name %></td>
+      <td><%= t.passport_number %></td>
+      <td><%= t.train.number %></td>
+      <td><%= t.start_station.title %></td>
+      <td><%= t.end_station.title %></td>
+
+      <td><%= link_to 'Показать', ticket_path(t) %></td>
+      <td><%= link_to 'Удалить', ticket_path(t), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>
+<p>
+  <%= link_to 'Новый поиск', search_path %>
+</p>
