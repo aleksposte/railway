@@ -12,6 +12,9 @@ class Ticket < ActiveRecord::Base
   # Принадлежит train
   belongs_to :train
  
+  # Валидайии для проверки имени пассажира, паспорта
+  validates :passenger_name, :passport_number, presence: true
+
 end
 
 

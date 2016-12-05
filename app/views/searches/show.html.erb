@@ -11,11 +11,11 @@
       <div class="row">
         <div class="col-md-4">
           <%= f.label :start_station_id, 'Станция отправления:' %>
-          <%= f.collection_select :start_station_id, RailwayStation.all, :id, :title, {} %>
+          <%= f.collection_select :start_station_id, RailwayStation.all.ordered_by_title, :id, :title, {} %>
         </div>
         <div class="col-md-4">
           <%= f.label :end_station_id, 'Станция назначения:' %>
-          <%= f.collection_select :end_station_id, RailwayStation.all, :id, :title, {} %>
+          <%= f.collection_select :end_station_id, RailwayStation.all.ordered_by_title, :id, :title, {} %>
         </div>
         <div class="col-md-4">
           <%= f.submit 'Найти' %>
@@ -44,7 +44,8 @@
                       <td><%= @search.start_station.arrival_time(t.route) %></td>
                       <td><%= @search.end_station.departure_time(t.route) %></td>
                       <td>
-                        <%= form_tag({controller: "tickets", action: "new"}, method: "post") do %> 
+                        <!-- form_tag({controller: "tickets", action: "new"}, method: "post") -->
+                        <%= form_tag (new_ticket_path) do %> 
                             <%= hidden_field_tag :train_id, t.id %>
                             <%= hidden_field_tag :start_station_id, @search.start_station_id %>
                             <%= hidden_field_tag :end_station_id, @search.end_station_id %>
