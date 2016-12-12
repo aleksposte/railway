@@ -1,6 +1,6 @@
 class CarriagesController < ApplicationController
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
-  before_action :set_train, only: [:new, :create]
+  # before_action :set_train, only: [:new, :create]
 
   def index
     @carriages = Carriage.all

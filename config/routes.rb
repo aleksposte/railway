@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     patch :update_position, on: :member
   end
 
+  resource :carriages, only: [:new, :create]
+
   # Добавление вагонов через вложенный ресурс
   resources :trains do
     resources :carriages, shallow: true
