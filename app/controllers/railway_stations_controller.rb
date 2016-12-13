@@ -62,3 +62,4 @@ class RailwayStationsController < ApplicationController
       params.require(:railway_station).permit(:title, :route_id)
     end
 end
+

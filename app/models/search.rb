@@ -2,7 +2,7 @@ class Search
 
   include ActiveModel::Model
 
-  attr_accessor :start_station_id, :end_station_id
+  attr_accessor :start_station_id, :end_station_id, :railway_stations_both
   attr_reader :result
 
   validates :start_station_id, :end_station_id, presence: true
@@ -17,8 +17,11 @@ class Search
 
   def run
     if valid?
-      @result = Train.includes(route: :railway_stations).where(railway_stations: {id: start_station_id}) &
-                Train.includes(route: :railway_stations).where(railway_stations: {id: end_station_id})
+      # @railway_stations_both = RailwayStation.includes(:start_station_id, :end_station_id)
+      @result = Train.includes(route: :railway_stations).where(RailwayStation.includes(:start_station_id, :end_station_id)) 
+       puts @result
+      # @result = Train.includes(route: :railway_stations).where(railway_stations: {id: start_station_id} & {id: end_station_id}) 
+       
     end
   end
 

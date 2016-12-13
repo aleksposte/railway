@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     patch :update_position, on: :member
   end
 
+  # get 'carriages/new' => 'carriages#new'
   resource :carriages, only: [:new, :create]
 
   # Добавление вагонов через вложенный ресурс
