@@ -18,10 +18,13 @@ class Search
   def run
     if valid?
       # @railway_stations_both = RailwayStation.includes(:start_station_id, :end_station_id)
-      @result = Train.includes(route: :railway_stations).where(RailwayStation.includes(:start_station_id, :end_station_id)) 
-       puts @result
+      # @result = Train.includes(route: :railway_stations).where(RailwayStation.includes(:start_station_id, :end_station_id)) 
+       # puts @result
       # @result = Train.includes(route: :railway_stations).where(railway_stations: {id: start_station_id} & {id: end_station_id}) 
        
+      @result = Train.includes(route: :railway_stations).where(railway_stations: { id: start_station_id }) &
+                Train.includes(route: :railway_stations).where(railway_stations: { id: end_station_id })
+    
     end
   end
 

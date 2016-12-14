@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :confirmable, :validatable
 
   # Много tikets
-  has_many :tikets
+  has_many :tickets
 end

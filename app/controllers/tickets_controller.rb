@@ -1,10 +1,10 @@
 class TicketsController < ApplicationController
-  
+ before_action :authenticate_user!
  before_action :set_params, only: [:new]
  before_action :set_ticket, only: [:show, :destroy, :update, :edit]
 
   def index
-    @tickets = Ticket.all
+    @tickets = current_user.tickets
   end
 
   def show
@@ -16,7 +16,7 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = current_user.ticket.new(ticket_params)
+    @ticket = current_user.tickets.new(ticket_params)
 
     if @ticket.save
       redirect_to ticket_path(@ticket)
@@ -51,7 +51,7 @@ private
   end
 
   def set_ticket
-    @ticket = current_user.ticket.find(params[:id])
+    @ticket = Ticket.find(params[:id])
   end
 
 end
