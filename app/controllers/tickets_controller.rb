@@ -1,11 +1,10 @@
 class TicketsController < ApplicationController
- before_action :authenticate_user!
+  
  before_action :set_params, only: [:new]
- before_action :set_ticket, only: [:show, :destroy]
+ before_action :set_ticket, only: [:show, :destroy, :update, :edit]
 
   def index
-    # @tickets = Ticket.all
-    @tickets = current_user.tickets
+    @tickets = Ticket.all
   end
 
   def show
@@ -16,9 +15,8 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(train_id: params[:train_id], start_station_id: params[:start_station_id], end_station_id: params[:end_station_id])
   end
 
-  # Создается только при авторизации пользователя
   def create
-    @ticket = current_user.tickets.new(ticket_params)
+    @ticket = current_user.ticket.new(ticket_params)
 
     if @ticket.save
       redirect_to ticket_path(@ticket)
@@ -57,4 +55,3 @@ private
   end
 
 end
-
