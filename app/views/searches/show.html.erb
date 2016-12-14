@@ -11,11 +11,11 @@
       <div class="row">
         <div class="col-md-4">
           <%= f.label :start_station_id, 'Станция отправления:' %>
-          <%= f.collection_select :start_station_id, RailwayStation.ordered_by_title, :id, :title, {} %>
+          <%= f.collection_select :start_station_id, RailwayStation.all.ordered_by_title, :id, :title, {} %>
         </div>
         <div class="col-md-4">
           <%= f.label :end_station_id, 'Станция назначения:' %>
-          <%= f.collection_select :end_station_id, RailwayStation.ordered_by_title, :id, :title, {} %>
+          <%= f.collection_select :end_station_id, RailwayStation.all.ordered_by_title, :id, :title, {} %>
         </div>
         <div class="col-md-4">
           <%= f.submit 'Найти' %>
