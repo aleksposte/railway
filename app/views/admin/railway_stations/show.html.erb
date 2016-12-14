@@ -1,0 +1,14 @@
+<%= link_to 'Главная', root_path %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Все станции:</strong>
+  <%= @railway_station.title %>
+</p>
+
+<%= link_to 'Редактировать', edit_admin_railway_station_path(@railway_station) %>
+<%= link_to 'Назад', admin_railway_stations_path %>
+
+
+
+

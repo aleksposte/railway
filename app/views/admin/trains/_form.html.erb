@@ -1,0 +1,25 @@
+<%= form_for [:admin, @train] do |f| %>
+  
+  <!-- Сообщения об ошибках вынесены в 'common/errors' -->
+  <%= render 'common/errors', resource: @train %>
+
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :route %><br>
+    <%= f.collection_select :route_id, Route.all, :id, :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sort_order, 'Отсортировать с головы состава!' %>
+    <%= f.check_box :sort_order %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

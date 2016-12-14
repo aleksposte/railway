@@ -1,0 +1,50 @@
+<%= form_for [:admin, @train, @carriage] do |f| %>
+  
+  <!-- Сообщения об ошибках вынесены в 'common/errors' -->
+  <%= render 'common/errors', resource: @carriage %>
+  
+  <div class="field">
+    <%= f.label :train_id, "Номер поезда, к которому добавить" %><br>
+    
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type_carriage, "Тип вагона:" %>
+    <%= f.select :type_carriage, Carriage.type_carriage%>
+  </div>
+
+  <div class="field">
+    <%= f.label :number, "Номер вагона" %><br>
+    <%= f.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :top_seats, "Количество верхних мест" %><br>
+    <%= f.number_field :top_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bottom_seats, "Количество нижних мест" %><br>
+    <%= f.number_field :bottom_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :side_top_seats, "Количество боковых верхних мест" %><br>
+    <%= f.number_field :side_top_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :side_bottom_seats, "Количество боковых нижних мест" %><br>
+    <%= f.number_field :side_bottom_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :seat_seats, "Количество сидячих мест" %><br>
+    <%= f.number_field :seat_seats %>
+  </div>
+
+  <div class="actions">
+     <%= f.submit %>
+  </div>
+<% end %>

@@ -16,7 +16,7 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = current_user.ticket.new(ticket_params)
 
     if @ticket.save
       redirect_to ticket_path(@ticket)
@@ -51,7 +51,7 @@ private
   end
 
   def set_ticket
-    @ticket = Ticket.find(params[:id])
+    @ticket = current_user.ticket.find(params[:id])
   end
 
 end

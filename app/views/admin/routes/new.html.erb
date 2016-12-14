@@ -1,0 +1,25 @@
+<%= link_to 'Главная', root_path %><br>
+<h1>Новый маршрут:</h1>
+
+<!-- Сообщения об ошибках вынесены в 'common/errors' -->
+<%= render 'common/errors', resource: @route %>
+
+<%= form_for(@route) do |f| %>
+  
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :railway_station_ids, "Список станций" %>
+    <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, { multiple: true } %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>
+
+
+<%= link_to 'Назад', admin_routes_path %>

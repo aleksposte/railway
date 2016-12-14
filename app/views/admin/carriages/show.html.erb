@@ -1,0 +1,53 @@
+<%= link_to 'Главная', root_path %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Вагон номер:</strong>
+  <%= @carriage.number %>
+  <strong>Тип:</strong>
+  <% if @carriage.type_carriage.present? %>
+      <%= @carriage.type_carriage %>
+  <% else %>
+      Тип не указан
+  <% end %>
+<ul>
+  <li>
+    Верхних мест:
+    <% top_seats = @carriage.top_seats.nil? ? 0 : @carriage.top_seats %>
+    <%= top_seats %>
+  </li>
+  <li>
+    Нижних мест:
+    <% bottom_seats = @carriage.bottom_seats.nil? ? 0 : @carriage.bottom_seats %>
+    <%= bottom_seats %>
+  </li>
+  <li>
+    Верхних боковых мест:
+    <% side_top_seats = @carriage.side_top_seats.nil? ? 0 : @carriage.side_top_seats %>
+    <%= side_top_seats %>
+  </li>
+  <li>
+    Нижних боковых мест:
+    <% side_bottom_seats = @carriage.side_bottom_seats.nil? ? 0 : @carriage.side_bottom_seats %>
+    <%= side_bottom_seats %>
+  </li>
+  <li>
+    Сидячих мест :
+    <% seat_seats = @carriage.seat_seats.nil? ? 0 : @carriage.seat_seats %>
+    <%= seat_seats %>
+  </li>
+  <li>
+    Всего мест:
+    <%= top_seats + bottom_seats + side_top_seats + side_bottom_seats + seat_seats %>
+  </li>
+</ul>
+</p>
+
+<p>
+<%= link_to 'Просмотреть', [:admin, @carriage] %>
+<%= link_to 'Редактировать', edit_admin_carriage_path(@carriage) %>
+<%= link_to 'Удалить', [:admin, @carriage], method: :delete, data: { confirm: 'Точно удалить?' } %><br>
+<%= link_to 'Список поездов', admin_trains_path %><br>
+<%= link_to 'Назад', admin_carriages_path %>
+</p>
+

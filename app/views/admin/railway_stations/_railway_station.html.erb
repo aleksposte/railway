@@ -1,0 +1,7 @@
+<!-- Безымянные parshials -->
+<tr>
+  <td><%= railway_station.title %></td>
+  <td><%= link_to 'Просмотреть', admin_railway_station_path(railway_station) %></td>
+  <td><%= link_to 'Редактировать', edit_admin_railway_station_path(railway_station) %></td>
+  <td><%= link_to 'Удалить', admin_railway_station_path(railway_station), method: :delete, data: { confirm: 'Точно удалить?' } %></td>
+</tr>

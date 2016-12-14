@@ -1,33 +1,33 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'welcome#index'
   # get 'welcome/index'
 
-  # Создаем вызов своего экшена, on: :member - работает с отдельным объектом (для коллекции - on: :collection)
-  resources :railway_stations do
-    patch :update_position, on: :member
+  # Разделение видимости на admin и пользователей
+  namespace :admin do
+
+    # Создаем вызов своего экшена, on: :member - работает с отдельным объектом (для коллекции - on: :collection)
+    resources :railway_stations do
+      patch :update_position, on: :member
+    end
+
+    # get 'carriages/new' => 'carriages#new'
+    resource :carriages, only: [:new, :create]
+
+    # Добавление вагонов через вложенный ресурс
+    resources :trains do
+      resources :carriages, shallow: true
+    end
+
+    resources :carriages
   end
 
-  # get 'carriages/new' => 'carriages#new'
-  resource :carriages, only: [:new, :create]
-
-  # Добавление вагонов через вложенный ресурс
-  resources :trains do
-    resources :carriages, shallow: true
-  end
-
-  resources :routes
-  resources :carriages
-
+  # Относятся к пользовательской части:
   resource :search, only: [:new, :create, :show, :edit]
-
   resources :tickets do
     post :new, on: :member
   end
-
-  # resources :tickets, except: [:new, :create]
-  #   post :new, :collection
-  # end
-
+  resources :routes
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
