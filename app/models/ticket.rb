@@ -1,4 +1,5 @@
 class Ticket < ActiveRecord::Base
+  
   # Принадлежит user
   belongs_to :user
 
