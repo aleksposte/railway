@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20161214061545) do
-=======
-ActiveRecord::Schema.define(version: 20161123093325) do
->>>>>>> parent of 73ea067... Task 16, fix
+ActiveRecord::Schema.define(version: 20161214101634) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer  "number",            default: 0
@@ -43,7 +39,7 @@ ActiveRecord::Schema.define(version: 20161123093325) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "station_number"
-    # t.integer  "position"
+    t.integer  "position"
     t.string   "arrival_time"
     t.string   "departure_time"
   end
@@ -54,23 +50,8 @@ ActiveRecord::Schema.define(version: 20161123093325) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tickets", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "start_station_id"
-    t.integer  "end_station_id"
-    t.string   "number"
-    t.string   "passenger_name"
-    t.string   "passport_number"
-    t.integer  "user_id"
-    t.integer  "train_id"
-  end
-
-  add_index "tickets", ["end_station_id"], name: "index_tickets_on_end_station_id"
-  add_index "tickets", ["start_station_id", "end_station_id"], name: "index_tickets_on_start_station_id_and_end_station_id"
-  add_index "tickets", ["start_station_id"], name: "index_tickets_on_start_station_id"
-  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id"
+# Could not dump table "tickets" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "trains", force: :cascade do |t|
     t.integer  "number"
@@ -101,4 +82,3 @@ ActiveRecord::Schema.define(version: 20161123093325) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
-

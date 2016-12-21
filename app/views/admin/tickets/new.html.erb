@@ -1,0 +1,65 @@
+<%= link_to 'Главная', root_path %><br>
+
+<h2>Покупка билета</h2>
+ 
+ <!-- Данные о выбранно маршруте  -->
+<table>
+  <tbody align="left">
+  <tr>
+    <th>Номер поезда:</th>
+    <td><%= @train.number %></td>
+  </tr>
+  <tr>
+    <th>Маршрут:</th>
+    <td><%= @train.route.title %></td>
+  </tr>
+  <tr>
+    <th>Станция отправления:</th>
+    <td><%= @start_station.title %></td>
+  </tr>
+  <tr>
+    <th>Станция назначения:</th>
+    <td><%= @end_station.title %></td>
+  </tr>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'Список билетов', tickets_path %>
+</p>
+
+  <!-- Форма для покупки билета -->
+<div class="row">
+  <div class="col-md-4">
+    <h2>Данные пассажира:</h2>
+
+    <%= form_for [:admin, @ticket] do |f| %>
+
+    <!-- Сообщения об ошибках вынесены в 'common/errors' -->
+    <%= render 'common/errors', resource: @ticket %>
+
+        <%= f.hidden_field :train_id %>
+        <%= f.hidden_field :start_station_id %>
+        <%= f.hidden_field :end_station_id %>
+
+        <div>
+          <%= f.label :passenger_name, 'Пассажир имя:' %>
+          <%= f.text_field :passenger_name %>
+        </div>
+
+        <div>
+          <%= f.label :passport_number, 'Паспорт №:' %>
+          <%= f.text_field :passport_number %>
+        </div>
+
+        <div>
+          <%= f.submit 'Купить Билет' %>
+        </div>
+    <% end %>
+
+</div>
+</div>
+<p>
+  <%= link_to 'Список билетов', admin_tickets_path %><br>
+  <%= link_to 'Новый поиск', search_path %>
+</p>

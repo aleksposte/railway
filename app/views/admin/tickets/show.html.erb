@@ -1,0 +1,45 @@
+<%= link_to 'Главная', root_path %><br>
+
+<h2>Билет:</h2>
+
+<table class='table table-striped'>
+  <tbody align="left">
+  <tr>
+    <th><%= 'Поезд №:' %></th>
+    <td><%= @ticket.train.number %></td>
+  </tr>
+  <tr>
+    <th><%= 'Маршрут:' %></th>
+    <td><%= @ticket.train.route.title %></td>
+  </tr>
+  <tr>
+    <th><%= 'Станция отправления:' %></th>
+    <td>
+      <%= @ticket.start_station.title %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= 'Станция назначения:' %></th>
+    <td>
+      <%= @ticket.end_station.title %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= 'Пассажир имя:' %></th>
+    <td>
+      <%= @ticket.passenger_name %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= 'Паспорт №:' %></th>
+    <td>
+      <%= @ticket.passport_number %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'Список билетов', admin_tickets_path %><br>
+  <%= link_to 'Новый поиск', search_path %>
+</p>

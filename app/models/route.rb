@@ -25,8 +25,4 @@ class Route < ActiveRecord::Base
     end
   end
 
-   def station_in_route(station_id)
-    railway_stations_routes.where('railway_station_id = ? and route_id = ?', station_id, id).first
-  end
-
 end
