@@ -22,7 +22,7 @@ class Admin::RailwayStationsController < Admin::BaseController
 
     respond_to do |format|
       if @railway_station.save
-        format.html { redirect_to @railway_station, notice: 'Станция создана!' }
+        format.html { redirect_to admin_railway_stations_path(@railway_station), notice: 'Станция создана!' }
       else
         format.html { render :new }
       end
@@ -32,7 +32,7 @@ class Admin::RailwayStationsController < Admin::BaseController
   def update
     respond_to do |format|
       if @railway_station.update(railway_station_params)
-        format.html { redirect_to @railway_station, notice: 'Информация о станции обновлена!' }
+        format.html { redirect_to admin_railway_station_path(@railway_station), notice: 'Информация о станции обновлена!' }
       else
         format.html { render :edit }
       end
@@ -51,7 +51,7 @@ class Admin::RailwayStationsController < Admin::BaseController
   def destroy
     @railway_station.destroy
     respond_to do |format|
-      format.html { redirect_to railway_stations_url, notice: 'Станция удалена!' }
+      format.html { redirect_to admin_railway_stations_path, notice: 'Станция удалена!' }
     end
   end
 
