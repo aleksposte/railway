@@ -4,12 +4,12 @@
   <%= render 'common/errors', resource: @train %>
 
   <div class="field">
-    <%= f.label :number %><br>
+    <%= f.label :number, "Номер поезда:" %><br>
     <%= f.number_field :number %>
   </div>
 
   <div class="field">
-    <%= f.label :route %><br>
+    <%= f.label :route, "Маршрут:" %><br>
     <%= f.collection_select :route_id, Route.all, :id, :title %>
   </div>
 
