@@ -19,7 +19,8 @@ class TicketsController < ApplicationController
     @ticket = current_user.tickets.new(ticket_params)
 
     if @ticket.save
-      redirect_to ticket_path(@ticket)
+      # redirect_to ticket_path(@ticket)
+      redirect_to @ticket
     else
       render :show
     end
@@ -52,6 +53,7 @@ private
 
   def set_ticket
     @ticket = Ticket.find(params[:id])
+    redirect_to my_tickets_path  unless @ticket.user == current_user
   end
 
 end

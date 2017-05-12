@@ -15,7 +15,22 @@ class Ticket < ActiveRecord::Base
   # Валидайии для проверки имени пассажира, паспорта
   validates :passenger_name, :passport_number, presence: true
 
+  after_create :send_notification
+  after_destroy :cancel_notification
+
+  private
+
+  # Отправка письма о покупке
+  def send_notification
+    TicketsMailer.buy_ticket(self.user, self).deliver_now
+  end
+  # Отправка письма об отмене
+  def cancel_notification
+    TicketsMailer.cancel_ticket(self).deliver_now
+  end
+
 end
+
 
 
   

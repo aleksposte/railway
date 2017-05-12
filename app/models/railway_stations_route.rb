@@ -9,3 +9,4 @@ class RailwayStationsRoute < ActiveRecord::Base
 
   default_scope { order(:station_number) }
 end
+
