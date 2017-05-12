@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -37,7 +37,8 @@ gem 'devise'
 gem 'devise-i18n'
 # gem 'twitter-bootstrap-rails'
 gem 'bootstrap-sass'
-
+# Компиляция на heroku
+gem 'rails_12factor'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
